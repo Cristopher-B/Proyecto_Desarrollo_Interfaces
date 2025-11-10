@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus - Recomendaciones</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="menu-icon">&#9776;</label>
+
+    <div class="sidebar">
+        <div class="logo-container">
+            <div class="logoimg">
+                <img src="images/Logo.png" alt="Logo">
+            </div>
+            <h2 class="logo">NEXUS</h2>
+        </div>
+        <ul class="menu">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="Library.html">Biblioteca</a></li>
+            <li><a href="store.html">Tienda</a></li>
+            <li><a href="recommendations.html" class="activo">Recomendaciones</a></li>
+            <li><a href="news.html">Novedades</a></li>
+        </ul>
+    </div>
+
+    <div class="main">
+        <header>
+            <h1><span>Recomendaciones</span></h1>
+            <div class="icons">
+                <i class="fa-solid fa-shopping-cart"></i>
+                <i class="fa-solid fa-user"></i>
+            </div>
+        </header>
+
+        <section class="personalizadas">
+            <h2>Basado en tu actividad</h2>
+            <div class="grid-recomendaciones grid">
+                <div class="card">
+                    <div class="tag-recomendacion personalizada">Personalizada</div>
+                    <img src="Images/TESO.png" alt="Elder Scrolls Online">
+                    <div class="info">
+                        <h3>Elder Scrolls Online</h3>
+                        <p>$9.99</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="tag-recomendacion alto-rating">Alto Rating</div>
+                    <img src="Images/Logo_of_Stardew_Valley.png" alt="Stardew Valley">
+                    <div class="info">
+                        <h3>Stardew Valley</h3>
+                        <p>$14.99</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="tag-recomendacion personalizada">Personalizada</div>
+                    <img src="images/Sekiro_art.png" alt="Sekiro">
+                    <div class="info">
+                        <h3>Sekiro: Shadows Die Twice</h3>
+                        <p>$39.99</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="populares">
+            <h2>Lo más vendido de la semana</h2>
+            <div class="grid-recomendaciones grid">
+                <div class="card">
+                    <div class="tag-recomendacion popular">Popular</div>
+                    <img src="images/modernW.png" alt="Call of Duty">
+                    <div class="info">
+                        <h3>Modern Warfare III</h3>
+                        <p>$69.99</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="tag-recomendacion alto-rating">Alto Rating</div>
+                    <img src="images/StarCraft_II_-_Box_Art.png" alt="StarCraft 2">
+                    <div class="info">
+                        <h3>StarCraft II</h3>
+                        <p>$19.99</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>
