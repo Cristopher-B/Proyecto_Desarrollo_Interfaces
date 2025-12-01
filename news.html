@@ -12,75 +12,102 @@
 <body>
 
     <input type="checkbox" id="menu-toggle">
-    <label for="menu-toggle" class="menu-icon">&#9776;</label>
 
-    <div class="sidebar">
-        <div class="logo-container">
-            <div class="logoimg">
-                <img src="images/Logo.png" alt="Logo">
+    <div class="layout">
+
+        <div class="sidebar">
+            <div class="logo-container">
+                <div class="logoimg">
+                    <img src="images/Logo.png" alt="Logo">
+                </div>
+                <h2 class="logo">NEXUS</h2>
             </div>
-            <h2 class="logo">NEXUS</h2>
+
+            <ul class="menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="Library.html">Biblioteca</a></li>
+                <li><a href="store.html">Tienda</a></li>
+                <li><a href="recommendations.html">Recomendaciones</a></li>
+                <li><a href="news.html" class="activo">Novedades</a></li>
+                <li><a href="#" onclick="cerrarSesion()">Cerrar Sesión</a></li>
+                <li style="margin-top: 30px;"><button id="theme-toggle" class="sidebar-btn"><i class="fa-solid fa-moon"></i> Oscuro</button></li>
+            </ul>
         </div>
-        <ul class="menu">
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="Library.html">Biblioteca</a></li>
-            <li><a href="store.html">Tienda</a></li>
-            <li><a href="recommendations.html">Recomendaciones</a></li>
-            <li><a href="news.html" class="activo">Novedades</a></li>
-        </ul>
+
+        <div class="main">
+
+            <header>
+                <label for="menu-toggle" class="menu-icon">&#9776;</label>
+                <h1><span>Novedades</span></h1>
+
+                <div class="icons">
+                    <button id="theme-toggle" class="header-theme-toggle"><i class="fa-solid fa-moon"></i></button> 
+                    <i class="fa-solid fa-shopping-cart"></i>
+                    <i class="fa-solid fa-user"></i>
+                </div>
+            </header>
+
+            <section class="noticias-destacadas">
+                <h2>Noticias Destacadas</h2>
+
+                <div class="noticia-principal">
+                    <img src="images/GTA.png" alt="Imagen GTA">
+                    <div class="info-noticia">
+                        <h3>¡Grand Theft Auto VI se Retrasa!</h3>
+                        <p class="fecha">
+                            La comunidad tendrá que esperar más para explorar las icónicas calles de Vice City. Rockstar
+                            Games ha confirmado
+                            que el lanzamiento de Grand Theft Auto VI se retrasa nuevamente hasta noviembre de 2026.
+                        </p>
+                        <button class="leer-mas">Leer Artículo Completo →</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="anuncios-recientes">
+                <h2>Anuncios Recientes</h2>
+
+                <div class="grid-noticias">
+
+                    <div class="noticia-corta">
+                        <img src="Images/update.png" alt="Notas del Parche">
+                        <div class="info-corta">
+                            <h4>Notas del Parche 1.5.0</h4>
+                            <p class="fecha">Ayer</p>
+                        </div>
+                    </div>
+
+                    <div class="noticia-corta">
+                        <img src="images/esports.png" alt="Torneo eSports">
+                        <div class="info-corta">
+                            <h4>Torneo de Nexus eSports</h4>
+                            <p class="fecha">Hace 3 días</p>
+                        </div>
+                    </div>
+
+                    <div class="noticia-corta">
+                        <img src="images/desarrollador.png" alt="Diario del Desarrollador">
+                        <div class="info-corta">
+                            <h4>Diario del Desarrollador: Arte Conceptual</h4>
+                            <p class="fecha">Hace 1 semana</p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
     </div>
+    <footer class="footer">
+        <p>© 2025 NEXUS - Plataforma de Juegos. Todos los derechos reservados.</p>
 
-    <div class="main">
-        <header>
-            <h1><span>Novedades</span></h1>
-            <div class="icons">
-                <i class="fa-solid fa-shopping-cart"></i>
-                <i class="fa-solid fa-user"></i>
-            </div>
-        </header>
-
-        <section class="noticias-destacadas">
-            <h2>Noticias Destacadas</h2>
-            <div class="noticia-principal">
-                <img src="images/GTA.png" alt="Imagen de GTA">
-                <div class="info-noticia">
-                    <h3>¡Grand Theft Auto VI se Retrasa!</h3>
-                    <p class="fecha">La comunidad tendrá que esperar más para explorar las icónicas calles de Vice City.
-                        Rockstar
-                        Games ha confirmado que el lanzamiento de Grand Theft Auto VI se retrasa nuevamente hasta
-                        noviembre de 2026. </p>
-                    <button class="leer-mas">Leer Artículo Completo →</button>
-                </div>
-            </div>
-        </section>
-
-        <section class="anuncios-recientes">
-            <h2>Anuncios Recientes</h2>
-            <div class="grid-noticias">
-                <div class="noticia-corta">
-                    <img src="Images/update.png" alt="Notas del Parche">
-                    <div class="info-corta">
-                        <h4>Notas del Parche 1.5.0</h4>
-                        <p class="fecha">Ayer</p>
-                    </div>
-                </div>
-                <div class="noticia-corta">
-                    <img src="images/esports.png" alt="Torneo de eSports">
-                    <div class="info-corta">
-                        <h4>Torneo de Nexus eSports</h4>
-                        <p class="fecha">Hace 3 días</p>
-                    </div>
-                </div>
-                <div class="noticia-corta">
-                    <img src="images/desarrollador.png" alt="Diario de Desarrollador">
-                    <div class="info-corta">
-                        <h4>Diario del Desarrollador: Arte Conceptual</h4>
-                        <p class="fecha">Hace 1 semana</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
+        <div class="footer-socials">
+            <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" class="social"><i class="fab fa-youtube"></i></a>
+        </div>
+    </footer>
+    <script src="auth.js"></script>
 </body>
 
 </html>
