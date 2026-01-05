@@ -5,109 +5,116 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nexus - Novedades</title>
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+    <input type="checkbox" id="menu-toggle" class="d-none">
 
-    <input type="checkbox" id="menu-toggle">
-
-    <div class="layout">
-
-        <div class="sidebar">
-            <div class="logo-container">
-                <div class="logoimg">
-                    <img src="images/Logo.png" alt="Logo">
+    <div class="container-fluid p-0">
+        <div class="row g-0">
+            <div class="sidebar col-auto">
+                <div class="logo-container py-4 text-center">
+                    <div class="logoimg"><img src="images/Logo.png" alt="Logo" style="width: 60px;"></div>
+                    <h2 class="logo mt-2 text-white">NEXUS</h2>
                 </div>
-                <h2 class="logo">NEXUS</h2>
+                <ul class="menu list-unstyled ps-4">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="Library.html">Biblioteca</a></li>
+                    <li><a href="store.html">Tienda</a></li>
+                    <li><a href="recommendations.html">Recomendaciones</a></li>
+                    <li><a href="news.html" class="activo">Novedades</a></li>
+                    <li><a href="#" onclick="cerrarSesion()">Cerrar Sesión</a></li>
+                    <li class="mt-4">
+                        <button id="theme-toggle" class="sidebar-btn w-100 text-start">
+                            <i class="fa-solid fa-moon"></i> Oscuro
+                        </button>
+                    </li>
+                </ul>
             </div>
 
-            <ul class="menu">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="Library.html">Biblioteca</a></li>
-                <li><a href="store.html">Tienda</a></li>
-                <li><a href="recommendations.html">Recomendaciones</a></li>
-                <li><a href="news.html" class="activo">Novedades</a></li>
-                <li><a href="#" onclick="cerrarSesion()">Cerrar Sesión</a></li>
-                <li style="margin-top: 30px;"><button id="theme-toggle" class="sidebar-btn"><i class="fa-solid fa-moon"></i> Oscuro</button></li>
-            </ul>
-        </div>
-
-        <div class="main">
-
-            <header>
-                <label for="menu-toggle" class="menu-icon">&#9776;</label>
-                <h1><span>Novedades</span></h1>
-
-                <div class="icons">
-                    <button id="theme-toggle" class="header-theme-toggle"><i class="fa-solid fa-moon"></i></button> 
-                    <i class="fa-solid fa-shopping-cart"></i>
-                    <i class="fa-solid fa-user"></i>
-                </div>
-            </header>
-
-            <section class="noticias-destacadas">
-                <h2>Noticias Destacadas</h2>
-
-                <div class="noticia-principal">
-                    <img src="images/GTA.png" alt="Imagen GTA">
-                    <div class="info-noticia">
-                        <h3>¡Grand Theft Auto VI se Retrasa!</h3>
-                        <p class="fecha">
-                            La comunidad tendrá que esperar más para explorar las icónicas calles de Vice City. Rockstar
-                            Games ha confirmado
-                            que el lanzamiento de Grand Theft Auto VI se retrasa nuevamente hasta noviembre de 2026.
-                        </p>
-                        <button class="leer-mas">Leer Artículo Completo →</button>
+            <div class="main col px-4 py-3">
+                <header class="d-flex align-items-center justify-content-between py-3 mb-4 border-bottom border-secondary">
+                    <label for="menu-toggle" class="menu-icon d-md-none text-primary fs-2" style="cursor:pointer;">&#9776;</label>
+                    <h1 class="h3 mb-0 text-white"><span class="text-orange border-start border-4 ps-2">Novedades</span></h1>
+                    <div class="icons d-flex align-items-center gap-3 h5 mb-0 text-white">
+                        <button id="theme-toggle" class="header-theme-toggle bg-transparent border-0 text-white">
+                            <i class="fa-solid fa-moon"></i>
+                        </button> 
+                        <i class="fa-solid fa-shopping-cart" style="cursor:pointer;"></i>
+                        <i class="fa-solid fa-user" style="cursor:pointer;"></i>
                     </div>
-                </div>
-            </section>
+                </header>
 
-            <section class="anuncios-recientes">
-                <h2>Anuncios Recientes</h2>
-
-                <div class="grid-noticias">
-
-                    <div class="noticia-corta">
-                        <img src="Images/update.png" alt="Notas del Parche">
-                        <div class="info-corta">
-                            <h4>Notas del Parche 1.5.0</h4>
-                            <p class="fecha">Ayer</p>
+                <section class="noticias-destacadas mb-5">
+                    <h2 class="h4 mb-4 text-white">Noticias Destacadas</h2>
+                    <div class="card bg-secondary-custom border-0 overflow-hidden shadow-lg">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-lg-7">
+                                <img src="images/GTA.png" class="img-fluid w-100 h-100" alt="GTA VI" style="object-fit: cover; min-height: 350px;">
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="card-body p-4 p-md-5">
+                                    <h3 class="h2 text-white mb-3">¡Grand Theft Auto VI se Retrasa!</h3>
+                                    <p class="text-gray mb-4">
+                                        La comunidad tendrá que esperar más para explorar las icónicas calles de Vice City. Rockstar Games ha confirmado que el lanzamiento se retrasa nuevamente hasta noviembre de 2026.
+                                    </p>
+                                    <button class="btn btn-primary btn-lg px-4">Leer Artículo Completo →</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                </section>
 
-                    <div class="noticia-corta">
-                        <img src="images/esports.png" alt="Torneo eSports">
-                        <div class="info-corta">
-                            <h4>Torneo de Nexus eSports</h4>
-                            <p class="fecha">Hace 3 días</p>
+                <section class="anuncios-recientes mb-5">
+                    <h2 class="h4 mb-4 text-white">Anuncios Recientes</h2>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
+                        <div class="col">
+                            <div class="card h-100 bg-secondary-custom border-0 shadow-sm noticia-hover">
+                                <img src="Images/update.png" class="card-img-top" alt="Parche" style="height: 180px; object-fit: cover;">
+                                <div class="card-body">
+                                    <h4 class="h5 text-white mb-2">Notas del Parche 1.5.0</h4>
+                                    <p class="small text-orange mb-0 fw-bold">Ayer</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 bg-secondary-custom border-0 shadow-sm noticia-hover">
+                                <img src="images/esports.png" class="card-img-top" alt="eSports" style="height: 180px; object-fit: cover;">
+                                <div class="card-body">
+                                    <h4 class="h5 text-white mb-2">Torneo de Nexus eSports</h4>
+                                    <p class="small text-orange mb-0 fw-bold">Hace 3 días</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 bg-secondary-custom border-0 shadow-sm noticia-hover">
+                                <img src="images/desarrollador.png" class="card-img-top" alt="Dev" style="height: 180px; object-fit: cover;">
+                                <div class="card-body">
+                                    <h4 class="h5 text-white mb-2">Diario del Desarrollador: Arte Conceptual</h4>
+                                    <p class="small text-orange mb-0 fw-bold">Hace 1 semana</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="noticia-corta">
-                        <img src="images/desarrollador.png" alt="Diario del Desarrollador">
-                        <div class="info-corta">
-                            <h4>Diario del Desarrollador: Arte Conceptual</h4>
-                            <p class="fecha">Hace 1 semana</p>
-                        </div>
-                    </div>
-
-                </div>
-            </section>
+                </section>
+            </div>
         </div>
     </div>
-    <footer class="footer">
-        <p>© 2025 NEXUS - Plataforma de Juegos. Todos los derechos reservados.</p>
 
-        <div class="footer-socials">
-            <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="social"><i class="fab fa-x-twitter"></i></a>
-            <a href="#" class="social"><i class="fab fa-youtube"></i></a>
+    <footer class="footer py-4 bg-black text-center border-top border-secondary">
+        <p class="text-white-50">© 2025 NEXUS - Plataforma de Juegos. Todos los derechos reservados.</p>
+        <div class="footer-socials d-flex justify-content-center gap-4">
+            <a href="#" class="text-orange fs-4"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-orange fs-4"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-orange fs-4"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" class="text-orange fs-4"><i class="fab fa-youtube"></i></a>
         </div>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="auth.js"></script>
 </body>
-
 </html>

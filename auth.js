@@ -1,4 +1,4 @@
-// --------- Base de datos simulada (LocalStorage) ----------
+
 function obtenerUsuarios() {
     return JSON.parse(localStorage.getItem("usuarios")) || [];
 }
@@ -15,46 +15,41 @@ function obtenerUsuarioActivo() {
     return localStorage.getItem("usuarioActivo");
 }
 
-// --------- Actualiza botón de Login/Logout ----------
+
+function mostrarAviso(mensaje, tipo = 'info') {
+    alert(mensaje); 
+}
+
 function actualizarEstadoLogin() {
-    const usuarioActivo = localStorage.getItem("usuarioActivo");
+    const usuarioActivo = obtenerUsuarioActivo();
     const loginLogoutLink = document.getElementById("loginLogoutLink");
 
-    if (usuarioActivo) {
-        loginLogoutLink.textContent = "Cerrar sesión";
-        loginLogoutLink.setAttribute("onclick", "cerrarSesion()");
-    } else {
-        loginLogoutLink.textContent = "Iniciar Sesión";
-        loginLogoutLink.setAttribute("onclick", "window.location.href='login.html'");
+    if (loginLogoutLink) {
+        if (usuarioActivo) {
+            loginLogoutLink.textContent = "Cerrar sesión";
+            loginLogoutLink.setAttribute("onclick", "cerrarSesion()");
+        } else {
+            loginLogoutLink.textContent = "Iniciar Sesión";
+            loginLogoutLink.setAttribute("onclick", "window.location.href='login.html'");
+        }
     }
 }
 
-window.onload = actualizarEstadoLogin;
-
-// --------- Cerrar sesión ----------
 function cerrarSesion() {
-    const confirmar = confirm("¿Estás seguro de que deseas cerrar sesión?");
-
-    if (!confirmar) {
-        return;  
+    if (confirm("¿Estás seguro de que deseas cerrar sesión?")) {
+        localStorage.removeItem("usuarioActivo");
+        window.location.href = "index.html";
     }
-
-    localStorage.removeItem("usuarioActivo");
-    alert("Has cerrado sesión");
-    window.location.href = "index.html";
 }
+const paginasPublicas = ["login.html", "registro.html", "index.html", ""];
+const ruta = window.location.pathname.split("/").pop();
 
-// --------- Protección de rutas ----------
-const paginasPublicas = ["login.html", "registro.html", "index.html"];
-const paginaActual = window.location.pathname.split("/").pop();
-
-if (!paginasPublicas.includes(paginaActual)) {
+if (!paginasPublicas.includes(ruta)) {
     if (!obtenerUsuarioActivo()) {
         window.location.href = "login.html";
     }
 }
 
-// --------- Validaciones ----------
 function validarCorreo(correo) {
     return /^[^\s@]+@[^\s@]+\.com$/.test(correo);
 }
@@ -63,7 +58,6 @@ function validarContrasena(pass) {
     return /[A-Z]/.test(pass) && /[0-9]/.test(pass) && pass.length >= 5;
 }
 
-// --------- Registro ----------
 function registrarUsuario(event) {
     event.preventDefault();
 
@@ -75,33 +69,32 @@ function registrarUsuario(event) {
     let usuarios = obtenerUsuarios();
 
     if (usuarios.some(u => u[0] === usuario)) {
-        alert("El nombre de usuario ya existe");
+        mostrarAviso("El nombre de usuario ya existe");
         return;
     }
 
     if (!validarCorreo(correo)) {
-        alert("Correo inválido o sin .com");
+        mostrarAviso("Correo inválido (debe terminar en .com)");
         return;
     }
 
     if (!validarContrasena(pass)) {
-        alert("La contraseña debe tener mayúscula, número y mínimo 5 caracteres");
+        mostrarAviso("La contraseña debe tener mayúscula, número y mínimo 5 caracteres");
         return;
     }
 
     if (pass !== pass2) {
-        alert("Las contraseñas no coinciden");
+        mostrarAviso("Las contraseñas no coinciden");
         return;
     }
 
     usuarios.push([usuario, correo, pass]);
     guardarUsuarios(usuarios);
 
-    alert("Registro exitoso");
+    mostrarAviso("¡Registro exitoso! Ahora puedes iniciar sesión.");
     window.location.href = "login.html";
 }
 
-// --------- Login ----------
 function iniciarSesion(event) {
     event.preventDefault();
 
@@ -112,42 +105,56 @@ function iniciarSesion(event) {
     const encontrado = usuarios.find(u => u[0] === usuario && u[2] === pass);
 
     if (!encontrado) {
-        alert("Usuario o contraseña incorrectos");
+        mostrarAviso("Usuario o contraseña incorrectos");
         return;
     }
 
     guardarUsuarioActivo(usuario);
-    alert("Bienvenido " + usuario);
     window.location.href = "index.html";
 }
 
-// --------- Tema claro/oscuro ----------
-const toggleTema = document.getElementById('theme-toggle');
 const cuerpo = document.body;
 const claseModoClaro = 'light-mode';
 const claveTema = 'preferenciaTema';
 
 function aplicarTema(esClaro) {
+    const botonesTema = document.querySelectorAll('#theme-toggle'); 
+    
     if (esClaro) {
         cuerpo.classList.add(claseModoClaro);
-        if (toggleTema) toggleTema.innerHTML = '<i class="fa-solid fa-sun"></i>';
+        botonesTema.forEach(btn => {
+            if(btn.classList.contains('sidebar-btn')) {
+                btn.innerHTML = '<i class="fa-solid fa-sun"></i> Claro';
+            } else {
+                btn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+            }
+        });
     } else {
         cuerpo.classList.remove(claseModoClaro);
-        if (toggleTema) toggleTema.innerHTML = '<i class="fa-solid fa-moon"></i>';
+        botonesTema.forEach(btn => {
+            if(btn.classList.contains('sidebar-btn')) {
+                btn.innerHTML = '<i class="fa-solid fa-moon"></i> Oscuro';
+            } else {
+                btn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+            }
+        });
     }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    actualizarEstadoLogin();
+
+
     const preferencia = localStorage.getItem(claveTema);
     aplicarTema(preferencia === 'light');
-});
 
-if (toggleTema) {
-    toggleTema.addEventListener('click', () => {
-        const estaClaro = cuerpo.classList.contains(claseModoClaro);
-        const nuevoTema = estaClaro ? 'dark' : 'light';
-
-        aplicarTema(!estaClaro);
-        localStorage.setItem(claveTema, nuevoTema);
+    const botonesTema = document.querySelectorAll('#theme-toggle');
+    botonesTema.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const estaClaro = cuerpo.classList.contains(claseModoClaro);
+            const nuevoTema = estaClaro ? 'dark' : 'light';
+            aplicarTema(!estaClaro);
+            localStorage.setItem(claveTema, nuevoTema);
+        });
     });
-}
+});

@@ -5,108 +5,125 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nexus - Recomendaciones</title>
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+    <input type="checkbox" id="menu-toggle" class="d-none">
 
-    <input type="checkbox" id="menu-toggle">
-    <label for="menu-toggle" class="menu-icon">&#9776;</label>
-    <div class="layout">
-        <div class="sidebar">
-            <div class="logo-container">
-                <div class="logoimg">
-                    <img src="images/Logo.png" alt="Logo">
+    <div class="container-fluid p-0">
+        <div class="row g-0">
+            <div class="sidebar col-auto">
+                <div class="logo-container py-4 text-center">
+                    <div class="logoimg"><img src="images/Logo.png" alt="Logo" style="width: 60px;"></div>
+                    <h2 class="logo mt-2 text-white">NEXUS</h2>
                 </div>
-                <h2 class="logo">NEXUS</h2>
+                <ul class="menu list-unstyled ps-4">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="Library.html">Biblioteca</a></li>
+                    <li><a href="store.html">Tienda</a></li>
+                    <li><a href="recommendations.html" class="activo">Recomendaciones</a></li>
+                    <li><a href="news.html">Novedades</a></li>
+                    <li><a href="#" onclick="cerrarSesion()">Cerrar Sesión</a></li>
+                    <li class="mt-4">
+                        <button id="theme-toggle" class="sidebar-btn w-100 text-start">
+                            <i class="fa-solid fa-moon"></i> Oscuro
+                        </button>
+                    </li>
+                </ul>
             </div>
-            <ul class="menu">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="Library.html">Biblioteca</a></li>
-                <li><a href="store.html">Tienda</a></li>
-                <li><a href="recommendations.html" class="activo">Recomendaciones</a></li>
-                <li><a href="news.html">Novedades</a></li>
-                 <li><a href="#" onclick="cerrarSesion()">Cerrar Sesión</a></li>
-                 <li style="margin-top: 30px;"><button id="theme-toggle" class="sidebar-btn"><i class="fa-solid fa-moon"></i> Oscuro</button></li>
 
-            </ul>
-        </div>
+            <div class="main col px-4 py-3">
+                <header class="d-flex align-items-center justify-content-between py-3 mb-4 border-bottom border-secondary">
+                    <label for="menu-toggle" class="menu-icon d-md-none text-primary fs-2" style="cursor:pointer;">&#9776;</label>
+                    <h1 class="h3 mb-0 text-white"><span class="text-orange border-start border-4 ps-2">Recomendaciones</span></h1>
+                    <div class="icons d-flex align-items-center gap-3 h5 mb-0 text-white">
+                        <button id="theme-toggle" class="header-theme-toggle bg-transparent border-0 text-white">
+                            <i class="fa-solid fa-moon"></i>
+                        </button> 
+                        <i class="fa-solid fa-shopping-cart" style="cursor:pointer;"></i>
+                        <i class="fa-solid fa-user" style="cursor:pointer;"></i>
+                    </div>
+                </header>
 
-        <div class="main">
-            <header>
-                <h1><span>Recomendaciones</span></h1>
-                <div class="icons">
-                    <button id="theme-toggle" class="header-theme-toggle"><i class="fa-solid fa-moon"></i></button> 
-                    <i class="fa-solid fa-shopping-cart"></i>
-                    <i class="fa-solid fa-user"></i>
-                </div>
-            </header>
+                <section class="personalizadas mb-5">
+                    <h2 class="h4 mb-4 text-white">Basado en tu actividad</h2>
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+                        <div class="col">
+                            <div class="card h-100 bg-secondary-custom border-0 shadow-sm position-relative overflow-hidden">
+                                <div class="tag-recomendacion personalizada">Personalizada</div>
+                                <img src="Images/TESO.png" class="card-img-top" alt="Elder Scrolls Online">
+                                <div class="card-body text-center">
+                                    <h3 class="h6 text-white mb-2">Elder Scrolls Online</h3>
+                                    <p class="text-orange fw-bold mb-0">$9.99</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 bg-secondary-custom border-0 shadow-sm position-relative overflow-hidden">
+                                <div class="tag-recomendacion alto-rating">Alto Rating</div>
+                                <img src="Images/Logo_of_Stardew_Valley.png" class="card-img-top" alt="Stardew Valley">
+                                <div class="card-body text-center">
+                                    <h3 class="h6 text-white mb-2">Stardew Valley</h3>
+                                    <p class="text-orange fw-bold mb-0">$14.99</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 bg-secondary-custom border-0 shadow-sm position-relative overflow-hidden">
+                                <div class="tag-recomendacion personalizada">Personalizada</div>
+                                <img src="images/Sekiro_art.png" class="card-img-top" alt="Sekiro">
+                                <div class="card-body text-center">
+                                    <h3 class="h6 text-white mb-2">Sekiro: Shadows Die Twice</h3>
+                                    <p class="text-orange fw-bold mb-0">$39.99</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
-            <section class="personalizadas">
-                <h2>Basado en tu actividad</h2>
-                <div class="grid-recomendaciones grid">
-                    <div class="card">
-                        <div class="tag-recomendacion personalizada">Personalizada</div>
-                        <img src="Images/TESO.png" alt="Elder Scrolls Online">
-                        <div class="info">
-                            <h3>Elder Scrolls Online</h3>
-                            <p>$9.99</p>
+                <section class="populares mb-5">
+                    <h2 class="h4 mb-4 text-white">Lo más vendido de la semana</h2>
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+                        <div class="col">
+                            <div class="card h-100 bg-secondary-custom border-0 shadow-sm position-relative overflow-hidden">
+                                <div class="tag-recomendacion popular">Popular</div>
+                                <img src="images/modernW.png" class="card-img-top" alt="Call of Duty">
+                                <div class="card-body text-center">
+                                    <h3 class="h6 text-white mb-2">Modern Warfare III</h3>
+                                    <p class="text-orange fw-bold mb-0">$69.99</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 bg-secondary-custom border-0 shadow-sm position-relative overflow-hidden">
+                                <div class="tag-recomendacion alto-rating">Alto Rating</div>
+                                <img src="images/StarCraft_II_-_Box_Art.png" class="card-img-top" alt="StarCraft 2">
+                                <div class="card-body text-center">
+                                    <h3 class="h6 text-white mb-2">StarCraft II</h3>
+                                    <p class="text-orange fw-bold mb-0">$19.99</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="tag-recomendacion alto-rating">Alto Rating</div>
-                        <img src="Images/Logo_of_Stardew_Valley.png" alt="Stardew Valley">
-                        <div class="info">
-                            <h3>Stardew Valley</h3>
-                            <p>$14.99</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="tag-recomendacion personalizada">Personalizada</div>
-                        <img src="images/Sekiro_art.png" alt="Sekiro">
-                        <div class="info">
-                            <h3>Sekiro: Shadows Die Twice</h3>
-                            <p>$39.99</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="populares">
-                <h2>Lo más vendido de la semana</h2>
-                <div class="grid-recomendaciones grid">
-                    <div class="card">
-                        <div class="tag-recomendacion popular">Popular</div>
-                        <img src="images/modernW.png" alt="Call of Duty">
-                        <div class="info">
-                            <h3>Modern Warfare III</h3>
-                            <p>$69.99</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="tag-recomendacion alto-rating">Alto Rating</div>
-                        <img src="images/StarCraft_II_-_Box_Art.png" alt="StarCraft 2">
-                        <div class="info">
-                            <h3>StarCraft II</h3>
-                            <p>$19.99</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                </section>
+            </div>
         </div>
     </div>
-    <footer class="footer">
-        <p>© 2025 NEXUS - Plataforma de Juegos. Todos los derechos reservados.</p>
 
-        <div class="footer-socials">
-            <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="social"><i class="fab fa-x-twitter"></i></a>
-            <a href="#" class="social"><i class="fab fa-youtube"></i></a>
+    <footer class="footer mt-auto py-4 bg-black text-center border-top border-secondary">
+        <p class="text-white-50">© 2025 NEXUS - Plataforma de Juegos. Todos los derechos reservados.</p>
+        <div class="footer-socials d-flex justify-content-center gap-4">
+            <a href="#" class="text-orange fs-4"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-orange fs-4"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-orange fs-4"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" class="text-orange fs-4"><i class="fab fa-youtube"></i></a>
         </div>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="auth.js"></script>
 </body>
-
 </html>

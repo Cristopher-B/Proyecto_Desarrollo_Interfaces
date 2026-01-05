@@ -2,119 +2,145 @@
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nexus - Biblioteca</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus - Biblioteca</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-  <input type="checkbox" id="menu-toggle">
-  <label for="menu-toggle" class="menu-icon">&#9776;</label>
-  <div class="layout">
-    <div class="sidebar">
-      <div class="logo-container">
-        <div class="logoimg"><img src="images/Logo.png" alt="Logo"></div>
-        <h2 class="logo">NEXUS</h2>
-      </div>
-      <ul class="menu">
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="Library.html" class="activo">Biblioteca</a></li>
-        <li><a href="store.html">Tienda</a></li>
-        <li><a href="recommendations.html">Recomendaciones</a></li>
-        <li><a href="news.html">Novedades</a></li>
-        <li><a href="#" onclick="cerrarSesion()">Cerrar Sesión</a></li>
-        <li style="margin-top: 30px;"><button id="theme-toggle" class="sidebar-btn"><i class="fa-solid fa-moon"></i> Oscuro</button></li>
-      </ul>
+    <input type="checkbox" id="menu-toggle" class="d-none">
+    
+    <div class="container-fluid p-0">
+        <div class="row g-0">
+            <div class="sidebar col-auto">
+                <div class="logo-container py-4 text-center">
+                    <div class="logoimg"><img src="images/Logo.png" alt="Logo" style="width: 60px;"></div>
+                    <h2 class="logo mt-2">NEXUS</h2>
+                </div>
+                <ul class="menu list-unstyled ps-4">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="Library.html" class="activo">Biblioteca</a></li>
+                    <li><a href="store.html">Tienda</a></li>
+                    <li><a href="recommendations.html">Recomendaciones</a></li>
+                    <li><a href="news.html">Novedades</a></li>
+                    <li><a href="#" onclick="cerrarSesion()">Cerrar Sesión</a></li>
+                    <li class="mt-4">
+                        <button id="theme-toggle" class="sidebar-btn w-100 text-start">
+                            <i class="fa-solid fa-moon"></i> Oscuro
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="main col px-4 py-3">
+                <header class="d-flex align-items-center justify-content-between py-3 mb-4 border-bottom border-secondary">
+                    <label for="menu-toggle" class="menu-icon d-md-none text-primary fs-2" style="cursor:pointer;">&#9776;</label>
+                    <h1 class="h3 mb-0 text-white"><span class="text-orange border-start border-4 ps-2">Biblioteca</span></h1>
+                    
+                    <div class="icons d-flex align-items-center gap-3 h5 mb-0 text-white">
+                        <button id="theme-toggle" class="header-theme-toggle bg-transparent border-0 text-white">
+                            <i class="fa-solid fa-moon"></i>
+                        </button> 
+                        <i class="fa-solid fa-magnifying-glass" style="cursor:pointer;"></i>
+                        <i class="fa-solid fa-user" style="cursor:pointer;"></i>
+                    </div>
+                </header>
+
+                <section class="installed-games mb-5">
+                    <h2 class="h4 mb-4 text-orange border-start border-4 ps-2">Juegos Instalados</h2>
+                    
+                    <div class="row flex-column g-3">
+                        <div class="col-12">
+                            <div class="game-item d-flex align-items-center p-3 rounded-3 shadow-sm bg-secondary-custom">
+                                <img class="game-cover rounded shadow" src="images/cyberpunk.png" alt="Cyberpunk 2077" style="width: 80px; height: 80px; object-fit: cover;">
+                                <div class="game-info ms-3 flex-grow-1">
+                                    <h3 class="h5 mb-1 text-white">Cyberpunk 2077</h3>
+                                    <p class="small mb-0 text-gray">Horas jugadas: 100h | <span class="text-success">Instalado</span></p>
+                                </div>
+                                <button class="btn btn-primary px-4 fw-bold">Jugar</button>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="game-item d-flex align-items-center p-3 rounded-3 shadow-sm bg-secondary-custom">
+                                <img class="game-cover rounded shadow" src="images/DoomEternal.png" alt="Doom Eternal" style="width: 80px; height: 80px; object-fit: cover;">
+                                <div class="game-info ms-3 flex-grow-1">
+                                    <h3 class="h5 mb-1 text-white">Doom Eternal</h3>
+                                    <p class="small mb-0 text-gray">Horas jugadas: 50h | <span class="text-success">Instalado</span></p>
+                                </div>
+                                <button class="btn btn-primary px-4 fw-bold">Jugar</button>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="game-item d-flex align-items-center p-3 rounded-3 shadow-sm bg-secondary-custom">
+                                <img class="game-cover rounded shadow" src="images/Mortal-Komba11.png" alt="Mortal Kombat X" style="width: 80px; height: 80px; object-fit: cover;">
+                                <div class="game-info ms-3 flex-grow-1">
+                                    <h3 class="h5 mb-1 text-white">Mortal Kombat X</h3>
+                                    <p class="small mb-0 text-gray">Horas jugadas: 0.5h | <span class="text-success">Instalado</span></p>
+                                </div>
+                                <button class="btn btn-primary px-4 fw-bold">Jugar</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="to-install-games mb-5">
+                    <h2 class="h4 mb-4 text-orange border-start border-4 ps-2">Juegos por Instalar</h2>
+                    
+                    <div class="row flex-column g-3">
+                        <div class="col-12">
+                            <div class="game-item d-flex align-items-center p-3 rounded-3 shadow-sm bg-secondary-custom">
+                                <img class="game-cover rounded shadow" src="images/nierAutomata.png" alt="Nier" style="width: 80px; height: 80px; object-fit: cover;">
+                                <div class="game-info ms-3 flex-grow-1">
+                                    <h3 class="h5 mb-1 text-white">Nier: Automata</h3>
+                                    <p class="small mb-0 text-gray">Horas jugadas: 0h | Desinstalado</p>
+                                </div>
+                                <button class="btn btn-info px-4 fw-bold text-white">Instalar</button>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="game-item d-flex align-items-center p-3 rounded-3 shadow-sm bg-secondary-custom">
+                                <img class="game-cover rounded shadow" src="images/The Witcher.png" alt="Witcher" style="width: 80px; height: 80px; object-fit: cover;">
+                                <div class="game-info ms-3 flex-grow-1">
+                                    <h3 class="h5 mb-1 text-white">The Witcher 3</h3>
+                                    <p class="small mb-0 text-gray">Horas jugadas: 0h | Desinstalado</p>
+                                </div>
+                                <button class="btn btn-info px-4 fw-bold text-white">Instalar</button>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="game-item d-flex align-items-center p-3 rounded-3 shadow-sm bg-secondary-custom">
+                                <img class="game-cover rounded shadow" src="images/civilication.png" alt="Civ" style="width: 80px; height: 80px; object-fit: cover;">
+                                <div class="game-info ms-3 flex-grow-1">
+                                    <h3 class="h5 mb-1 text-white">Civilization VI</h3>
+                                    <p class="small mb-0 text-gray">Horas jugadas: 0h | Desinstalado</p>
+                                </div>
+                                <button class="btn btn-info px-4 fw-bold text-white">Instalar</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
     </div>
 
-    <div class="main">
-      <header>
-        <h1><span>Biblioteca</span></h1>
-        <div class="icons">
-          <button id="theme-toggle" class="header-theme-toggle"><i class="fa-solid fa-moon"></i></button> 
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <i class="fa-solid fa-user"></i>
+    <footer class="footer mt-auto py-4 bg-black text-center border-top border-secondary">
+        <p class="mb-2 text-white-50">© 2025 NEXUS - Plataforma de Juegos. Todos los derechos reservados.</p>
+        <div class="footer-socials d-flex justify-content-center gap-4">
+            <a href="#" class="text-orange fs-4"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-orange fs-4"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-orange fs-4"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" class="text-orange fs-4"><i class="fab fa-youtube"></i></a>
         </div>
-      </header>
+    </footer>
 
-      <section class="installed-games">
-        <h2>Juegos Instalados</h2>
-
-        <div class="game-item">
-          <img class="game-cover" src="images/cyberpunk.png" alt="Portada de Cyberpunk 2077">
-          <div class="game-info">
-            <h3>Cyberpunk 2077</h3>
-            <p>Horas jugadas: 100h | Instalado</p>
-          </div>
-          <button class="game-button installed-btn">Jugar</button>
-        </div>
-
-        <div class="game-item">
-          <img class="game-cover" src="images/DoomEternal.png" alt="Portada de Doom Eternal">
-          <div class="game-info">
-            <h3>Doom Eternal</h3>
-            <p>Horas jugadas: 50h | Instalado</p>
-          </div>
-          <button class="game-button installed-btn">Jugar</button>
-        </div>
-
-        <div class="game-item">
-          <img class="game-cover" src="images/Mortal-Komba11.png" alt="Portada de Mortal Kombat X">
-          <div class="game-info">
-            <h3>Mortal Kombat X</h3>
-            <p>Horas jugadas: 0.5h | Instalado</p>
-          </div>
-          <button class="game-button installed-btn">Jugar</button>
-        </div>
-      </section>
-
-      <section class="to-install-games">
-        <h2>Juegos por Instalar</h2>
-
-        <div class="game-item">
-          <img class="game-cover" src="images/nierAutomata.png" alt="Portada de Nier: Automata">
-          <div class="game-info">
-            <h3>Nier: Automata</h3>
-            <p>Horas jugadas: 0h | Desinstalado</p>
-          </div>
-          <button class="game-button to-install-btn">Instalar</button>
-        </div>
-
-        <div class="game-item">
-          <img class="game-cover" src="images/The Witcher.png" alt="Portada de The Witcher 3">
-          <div class="game-info">
-            <h3>The Witcher 3</h3>
-            <p>Horas jugadas: 0h | Desinstalado</p>
-          </div>
-          <button class="game-button to-install-btn">Instalar</button>
-        </div>
-
-        <div class="game-item">
-          <img class="game-cover" src="images/civilication.png" alt="Portada de Civilization VI">
-          <div class="game-info">
-            <h3>Civilization VI</h3>
-            <p>Horas jugadas: 0h | Desinstalado</p>
-          </div>
-          <button class="game-button to-install-btn">Instalar</button>
-        </div>
-      </section>
-
-    </div>
-  </div>
-  <footer class="footer">
-    <p>© 2025 NEXUS - Plataforma de Juegos. Todos los derechos reservados.</p>
-
-    <div class="footer-socials">
-      <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-      <a href="#" class="social"><i class="fab fa-instagram"></i></a>
-      <a href="#" class="social"><i class="fab fa-x-twitter"></i></a>
-      <a href="#" class="social"><i class="fab fa-youtube"></i></a>
-    </div>
-  </footer>
-  <script src="auth.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="auth.js"></script>
 </body>
-
 </html>
