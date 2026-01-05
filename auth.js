@@ -158,3 +158,103 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+// --- 1. BARRA DE BÚSQUEDA ---
+document.addEventListener("input", (e) => {
+    if (e.target.matches("header input")) {
+        const busqueda = e.target.value.toLowerCase();
+        const tarjetas = document.querySelectorAll(".card, .juego, .noticia-corta");
+
+        tarjetas.forEach(tarjeta => {
+            const texto = tarjeta.textContent.toLowerCase();
+            const contenedorCol = tarjeta.closest(".col");
+            if (texto.includes(busqueda)) {
+                tarjeta.style.display = "block";
+                if (contenedorCol) contenedorCol.style.display = "block";
+            } else {
+                tarjeta.style.display = "none";
+                if (contenedorCol) contenedorCol.style.display = "none";
+            }
+        });
+    }
+});
+
+// --- 2. VENTANAS FLOTANTES (TOASTS) ---
+function mostrarToast(mensaje) {
+    let container = document.getElementById("toast-container");
+    if (!container) {
+        container = document.createElement("div");
+        container.id = "toast-container";
+        container.style.cssText = "position: fixed; bottom: 20px; right: 20px; z-index: 9999;";
+        document.body.appendChild(container);
+    }
+
+    const toast = document.createElement("div");
+    toast.textContent = mensaje;
+    toast.style.cssText = `
+        background: #3c2e2e;
+        color: #ff4d00;
+        padding: 15px 25px;
+        border-radius: 8px;
+        margin-top: 10px;
+        border-left: 5px solid #ff4d00;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        animation: slideIn 0.5s ease forwards;
+    `;
+
+    container.appendChild(toast);
+
+    setTimeout(() => {
+        toast.style.animation = "slideOut 0.5s ease forwards";
+        setTimeout(() => toast.remove(), 500);
+    }, 3000);
+}
+
+// --- 3. SISTEMA DE RESEÑAS ---
+function inicializarReseñas() {
+    const items = document.querySelectorAll(".game-item");
+    
+    items.forEach(item => {
+        const infoDiv = item.querySelector(".flex-grow-1");
+        
+        if (infoDiv && !infoDiv.querySelector(".estrellas-rating")) {
+            const estrellasContainer = document.createElement("div");
+            estrellasContainer.className = "estrellas-rating mt-2";
+            estrellasContainer.innerHTML = `
+                <i class="far fa-star" data-value="1" style="cursor:pointer; font-size: 1.2rem;"></i>
+                <i class="far fa-star" data-value="2" style="cursor:pointer; font-size: 1.2rem;"></i>
+                <i class="far fa-star" data-value="3" style="cursor:pointer; font-size: 1.2rem;"></i>
+                <i class="far fa-star" data-value="4" style="cursor:pointer; font-size: 1.2rem;"></i>
+                <i class="far fa-star" data-value="5" style="cursor:pointer; font-size: 1.2rem;"></i>
+            `;
+            infoDiv.appendChild(estrellasContainer);
+        }
+    });
+}
+
+document.addEventListener("click", (e) => {
+    if (e.target.matches(".estrellas-rating i")) {
+        const valor = parseInt(e.target.dataset.value);
+        const contenedor = e.target.parentElement;
+        const estrellas = contenedor.querySelectorAll("i");
+        
+        estrellas.forEach(s => {
+            const sValue = parseInt(s.dataset.value);
+            if (sValue <= valor) {
+                s.classList.remove("far");
+                s.classList.add("fas", "text-warning");
+            } else {
+                s.classList.remove("fas", "text-warning");
+                s.classList.add("far");
+            }
+        });
+        if (typeof mostrarToast === 'function') {
+            mostrarToast(`Calificaste este juego con ${valor} estrellas`);
+        }
+    }
+});
+
+// IMPORTANTE: Ejecutar la función al cargar la página
+window.addEventListener("load", () => {
+    inicializarReseñas();
+});
